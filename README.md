@@ -34,10 +34,7 @@ docker run --rm -v $PWD:/app -w /app golang:1.25-alpine sh -c "GOOS=linux GOARCH
 ## 3. Copy Binary to Router
 
 The router must have **Entware** installed:
-
-```sh
-cp cs-firewall-bouncer /opt/bin/cs-firewall-bouncer
-```
+copy `cs-firewall-bouncer` to `/opt/bin/cs-firewall-bouncer` on the router
 
 ---
 
