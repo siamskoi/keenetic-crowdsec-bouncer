@@ -7,7 +7,7 @@ This guide explains how to build and deploy the CrowdSec Firewall Bouncer on a K
 ## 0. Prerequisites
 - Install crowdsec: https://docs.crowdsec.net/u/getting_started/installation/linux/
 - Install entware: [ENG](https://help.keenetic.com/hc/en-us/articles/360021214160-Installing-the-Entware-repository-package-system-on-a-USB-drive) [RUS](https://help.keenetic.com/hc/ru/articles/360021214160-%D0%A3%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0-%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D1%8B-%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%D0%BE%D0%B2-%D1%80%D0%B5%D0%BF%D0%BE%D0%B7%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D1%8F-Entware-%D0%BD%D0%B0-USB-%D0%BD%D0%B0%D0%BA%D0%BE%D0%BF%D0%B8%D1%82%D0%B5%D0%BB%D1%8C)
-
+- Golang or docker installed
 ---
 
 ## 1. Clone the Repository
@@ -21,6 +21,14 @@ cd cs-firewall-bouncer
 
 ## 2. Build the Bouncer for ARM
 
+Local:
+```sh
+# Download Go modules
+go mod download
+GOOS=linux GOARCH=arm64 CGO_ENABLED=0 go build -ldflags='-s -w' -o cs-firewall-bouncer
+```
+
+Or docker:
 ```sh
 # Download Go modules
 docker run --rm -v $PWD:/app -w /app golang:1.25-alpine go mod download
